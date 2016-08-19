@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+    <title>BlueTooth LE WebView Test</title>
+    <script>
+        function debug(str) {
+            document.getElementById('debug').innerHTML += str + "<br/>";
+        }
+        function BLEScanCallback(err, str) {
+          if(err) return debug("ERROR: " + err);
+          //debug("Got device: " + str);
+          var li = document.createElement('LI');
+          li.innerHTML = str;
+          document.getElementById('scanList').appendChild(li);
+        }
+
+        window.JSInterface.bluetoothLEScan('BLEScanCallback');
+    </script>
+</head>
+<body>
+    <h3>BlueTooth LE WebView Test</h3>
+    <ul id="scanList"></ul>
+    <div id="debug"> </div>
+</body>
+</html>
